@@ -8,7 +8,7 @@ import { Project } from '../utils/architecture';
 export const COMPANY_DETAILS = {
   name: 'IRA Promoters',
   tagline: 'Happiness in every nook & corner',
-  logoUrl: '/assets/aistudio/image_0a4dd5de.png',
+  logoUrl: '/ira-logo.jpg',
   phone1: '9573960563',
   phone2: '8096441881',
   whatsappNumber: '9573960563',

@@ -17,6 +17,7 @@ import { SiteVisitModal } from './components/SiteVisitModal';
 import { PrivacyModal } from './components/PrivacyModal';
 import { FloatingContactBar } from './components/FloatingContactBar';
 import { Footer } from './components/Footer';
+import { ScrollProgressBar, ScrollToTopButton, PageFadeOverlay } from './components/ScrollAnimations';
 import { Project } from './utils/architecture';
 
 export default function App() {
@@ -25,60 +26,116 @@ export default function App() {
   const [siteVisitTargetProject, setSiteVisitTargetProject] = useState<Project | undefined>(undefined);
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
 
+  // Smooth Fade Page Navigation State
+  const [isPageFading, setIsPageFading] = useState(false);
+  const [fadeTargetTitle, setFadeTargetTitle] = useState<string>('');
+
   const handleOpenSiteVisit = (project?: Project) => {
     setSiteVisitTargetProject(project);
     setIsSiteVisitModalOpen(true);
   };
 
-  const handleExploreProjects = () => {
-    const el = document.getElementById('projects');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
+  /**
+   * Smooth fade transition for page / section navigation
+   * Triggered when clicking footer links, navbar links, or hero buttons.
+   */
+  const handleNavigate = (targetId: string, title?: string) => {
+    const cleanId = targetId.replace('#', '');
+    setFadeTargetTitle(title || cleanId.toUpperCase());
+    setIsPageFading(true);
+
+    setTimeout(() => {
+      const el = document.getElementById(cleanId);
+      if (el) {
+        // Scroll smoothly to section accounting for sticky masthead
+        const navHeight = 90;
+        const bodyRect = document.body.getBoundingClientRect().top;
+        const elementRect = el.getBoundingClientRect().top;
+        const elementPosition = elementRect - bodyRect;
+        const offsetPosition = elementPosition - navHeight;
+
+        window.scrollTo({
+          top: offsetPosition > 0 ? offsetPosition : 0,
+          behavior: 'smooth',
+        });
+      }
+
+      // Complete the fade out
+      setTimeout(() => {
+        setIsPageFading(false);
+      }, 250);
+    }, 200);
   };
 
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-[#20252B] selection:bg-[#C59B4E] selection:text-[#14263D]">
-      {/* Top Fixed Masthead Navigation */}
-      <Navbar onOpenSiteVisit={() => handleOpenSiteVisit()} />
+    <div className="min-h-screen bg-[#FDFBF7] text-[#20252B] selection:bg-[#C59B4E] selection:text-[#14263D] relative">
+      {/* Real-time Golden Reading & Scroll Progress Bar */}
+      <ScrollProgressBar />
 
-      <main>
+      {/* Cinematic Fade Transition Overlay for Section/Page Navigation */}
+      <PageFadeOverlay isFading={isPageFading} targetName={fadeTargetTitle} />
+
+      {/* Top Fixed Masthead Navigation */}
+      <Navbar
+        onOpenSiteVisit={() => handleOpenSiteVisit()}
+        onNavigate={handleNavigate}
+      />
+
+      <main className={`transition-opacity duration-300 ${isPageFading ? 'opacity-40' : 'opacity-100'}`}>
         {/* Page 1: Home & Hero Banner */}
-        <Hero
-          onExploreProjects={handleExploreProjects}
-          onOpenSiteVisit={() => handleOpenSiteVisit()}
-        />
+        <div id="home-wrapper">
+          <Hero
+            onExploreProjects={() => handleNavigate('projects', 'Projects')}
+            onOpenSiteVisit={() => handleOpenSiteVisit()}
+          />
+        </div>
 
         {/* Page 2: About Us */}
-        <AboutSection />
+        <div id="about-wrapper">
+          <AboutSection />
+        </div>
 
         {/* Page 3: Founders & Leadership Team */}
-        <FoundersSection />
+        <div id="founders-wrapper">
+          <FoundersSection />
+        </div>
 
         {/* Page 4 & 5: Projects (Ongoing & Completed) & Details */}
-        <ProjectsSection
-          onSelectProject={(project) => setSelectedProject(project)}
-          onOpenSiteVisit={(project) => handleOpenSiteVisit(project)}
-        />
+        <div id="projects-wrapper">
+          <ProjectsSection
+            onSelectProject={(project) => setSelectedProject(project)}
+            onOpenSiteVisit={(project) => handleOpenSiteVisit(project)}
+          />
+        </div>
 
         {/* Page 6: Gallery & Site Ground Progress */}
-        <GallerySection />
+        <div id="gallery-wrapper">
+          <GallerySection />
+        </div>
 
         {/* Page 7: Buyer Guide & FAQs */}
-        <BuyerGuideSection />
+        <div id="guide-wrapper">
+          <BuyerGuideSection />
+        </div>
 
         {/* Page 8: Contact Us & Location */}
-        <ContactSection />
+        <div id="contact-wrapper">
+          <ContactSection />
+        </div>
       </main>
 
-      {/* Footer */}
+      {/* Footer with Smooth Fade Page Navigation */}
       <Footer
         onOpenPrivacy={() => setIsPrivacyModalOpen(true)}
         onOpenSiteVisit={() => handleOpenSiteVisit()}
+        onNavigate={handleNavigate}
       />
 
       {/* Floating Quick Contact Bar (Call & WhatsApp) for Mobile & Desktop */}
       <FloatingContactBar onOpenSiteVisit={() => handleOpenSiteVisit()} />
+
+      {/* Floating Scroll to Top Button with Smooth Entrance */}
+      <ScrollToTopButton onScrollTop={() => handleNavigate('home', 'Home')} />
 
       {/* Dynamic Project Details Modal */}
       <ProjectDetailModal

@@ -10,9 +10,10 @@ import { Phone, MessageCircle, Menu, X, Clock, MapPin } from 'lucide-react';
 
 interface NavbarProps {
   onOpenSiteVisit: () => void;
+  onNavigate?: (sectionId: string, sectionName?: string) => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenSiteVisit }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onOpenSiteVisit, onNavigate }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
@@ -24,6 +25,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSiteVisit }) => {
     { name: 'Buyer Guide', href: '#guide' },
     { name: 'Contact Us', href: '#contact' },
   ];
+
+  const handleNavClick = (e: React.MouseEvent, targetId: string, name: string) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    if (onNavigate) {
+      onNavigate(targetId, name);
+    } else {
+      const el = document.getElementById(targetId.replace('#', ''));
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   const whatsappUrl = buildWhatsAppLink(
     COMPANY_DETAILS.whatsappNumber,
@@ -70,7 +84,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSiteVisit }) => {
       {/* Main Navigation Bar */}
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-16 h-20 lg:h-24 flex items-center justify-between">
         {/* Brand Mark with Official Logo */}
-        <a href="#home" className="flex items-center space-x-3.5 group">
+        <button
+          onClick={(e) => handleNavClick(e, '#home', 'Home')}
+          className="flex items-center space-x-3.5 group text-left cursor-pointer"
+        >
           <div className="h-14 sm:h-16 w-auto overflow-hidden flex items-center justify-center p-0.5 border border-[#D9D2C6] bg-white shadow-xs">
             <img
               src={COMPANY_DETAILS.logoUrl}
@@ -91,19 +108,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSiteVisit }) => {
               {COMPANY_DETAILS.tagline}
             </span>
           </div>
-        </a>
+        </button>
 
         {/* Desktop Links */}
         <nav className="hidden xl:flex items-center space-x-8">
           {navLinks.map((link) => (
-            <a
+            <button
               key={link.name}
-              href={link.href}
-              className="font-sans-arch text-[13px] uppercase tracking-[0.15em] text-[#14263D] hover:text-[#C59B4E] font-medium transition-colors relative py-1 group"
+              onClick={(e) => handleNavClick(e, link.href, link.name)}
+              className="font-sans-arch text-[13px] uppercase tracking-[0.15em] text-[#14263D] hover:text-[#C59B4E] font-medium transition-colors relative py-1 group cursor-pointer"
             >
               {link.name}
               <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#C59B4E] transition-all duration-300 group-hover:w-full"></span>
-            </a>
+            </button>
           ))}
         </nav>
 
@@ -142,14 +159,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSiteVisit }) => {
         <div className="xl:hidden bg-[#FDFBF7] border-b border-[#D9D2C6] px-6 py-6 space-y-4 shadow-xl">
           <nav className="flex flex-col space-y-3">
             {navLinks.map((link) => (
-              <a
+              <button
                 key={link.name}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="font-sans-arch text-sm uppercase tracking-[0.15em] text-[#14263D] font-medium py-2 border-b border-[#D9D2C6]/50 hover:text-[#C59B4E]"
+                onClick={(e) => handleNavClick(e, link.href, link.name)}
+                className="font-sans-arch text-sm uppercase tracking-[0.15em] text-[#14263D] font-medium py-2 border-b border-[#D9D2C6]/50 hover:text-[#C59B4E] text-left cursor-pointer"
               >
                 {link.name}
-              </a>
+              </button>
             ))}
           </nav>
 

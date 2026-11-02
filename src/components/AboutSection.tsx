@@ -6,7 +6,7 @@
 import React from 'react';
 import { COMPANY_DETAILS } from '../data/companyData';
 import { AnimatedSection } from './AnimatedSection';
-import { ShieldCheck, Eye, Compass, Award, CheckCircle, Clock } from 'lucide-react';
+import { ShieldCheck, Eye, Compass, TrendingUp, CheckCircle, Clock } from 'lucide-react';
 
 export const AboutSection: React.FC = () => {
   const pillars = [
@@ -28,7 +28,7 @@ export const AboutSection: React.FC = () => {
     {
       title: 'Strategic High-Growth Corridors',
       desc: 'We select locations poised for genuine capital appreciation—such as Anandapuram, Bhogapuram Airport belt, and Madhurawada.',
-      icon: Award,
+      icon: TrendingUp,
     },
   ];
 

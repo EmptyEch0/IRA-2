@@ -1,6 +1,5 @@
 {
-  "name": "ira Promoters - Architectural Editorial",
+  "name": "IRA Promoters",
   "description": "IRA Promoters offers legally verified, Vaastu-compliant open plots, residential layouts, farmland, and flats in Visakhapatnam, Srikakulam, and Vizianagaram.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "requestFramePermissions": []
 }

@@ -5,11 +5,14 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 
+export type AnimationType = 'fade-up' | 'fade-down' | 'fade-left' | 'fade-right' | 'fade' | 'zoom-in';
+
 interface AnimatedSectionProps {
   children: React.ReactNode;
   className?: string;
   delay?: number;
   id?: string;
+  animation?: AnimationType;
 }
 
 export const AnimatedSection: React.FC<AnimatedSectionProps> = ({
@@ -17,12 +20,12 @@ export const AnimatedSection: React.FC<AnimatedSectionProps> = ({
   className = '',
   delay = 0,
   id,
+  animation = 'fade-up',
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const domRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // If IntersectionObserver is unavailable, make visible immediately
     if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
       setIsVisible(true);
       return;
@@ -33,7 +36,6 @@ export const AnimatedSection: React.FC<AnimatedSectionProps> = ({
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsVisible(true);
-            // Once visible, keep it visible
             if (domRef.current) {
               observer.unobserve(domRef.current);
             }
@@ -41,7 +43,7 @@ export const AnimatedSection: React.FC<AnimatedSectionProps> = ({
         });
       },
       {
-        threshold: 0.1,
+        threshold: 0.12,
         rootMargin: '0px 0px -40px 0px',
       }
     );
@@ -58,18 +60,33 @@ export const AnimatedSection: React.FC<AnimatedSectionProps> = ({
     };
   }, []);
 
+  const getAnimationClasses = () => {
+    switch (animation) {
+      case 'fade-up':
+        return isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10';
+      case 'fade-down':
+        return isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10';
+      case 'fade-left':
+        return isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10';
+      case 'fade-right':
+        return isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10';
+      case 'zoom-in':
+        return isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95';
+      case 'fade':
+      default:
+        return isVisible ? 'opacity-100' : 'opacity-0';
+    }
+  };
+
   return (
     <div
       id={id}
       ref={domRef}
       style={{
         transitionDelay: `${delay}ms`,
+        transitionDuration: '750ms',
       }}
-      className={`transition-all duration-700 ease-out will-change-transform ${
-        isVisible
-          ? 'opacity-100 translate-y-0'
-          : 'opacity-0 translate-y-8'
-      } ${className}`}
+      className={`transition-all ease-out will-change-transform will-change-opacity ${getAnimationClasses()} ${className}`}
     >
       {children}
     </div>

@@ -34,47 +34,32 @@ export const Hero: React.FC<HeroProps> = ({
 
   return (
     <section id="home" className="relative min-h-[90vh] flex flex-col justify-between overflow-hidden bg-[#FDFBF7] border-b border-[#D9D2C6]">
-      {/* Background Architectural Canvas Layer */}
-      <div className="absolute inset-0 z-0">
+      {/* Background Architectural Canvas Layer - Clean, seamless & line-free */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2200&q=85"
           alt="IRA Promoters Modern Layout and Properties"
-          className="w-full h-full object-cover object-center scale-[1.01] opacity-80"
+          className="w-full h-full object-cover object-center opacity-30"
         />
-        {/* Soft Cream Gradients */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#FDFBF7]/95 via-[#FDFBF7]/85 to-[#FDFBF7]/40 lg:w-[68%]"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-[#FDFBF7] via-transparent to-transparent h-48 bottom-0"></div>
-        {/* Architectural Grid pattern */}
-        <div className="absolute inset-0 pointer-events-none opacity-[0.08] bg-[radial-gradient(#14263D_1px,transparent_1px)] [background-size:28px_28px]"></div>
+        {/* Uniform, smooth 100% full-width canvas blend with zero cutoffs or seam lines */}
+        <div className="absolute inset-0 bg-[#FDFBF7]/80"></div>
       </div>
 
-      <div className="relative z-10 max-w-[1500px] mx-auto w-full px-4 sm:px-6 lg:px-16 pt-10 lg:pt-16 pb-12 flex-1 flex flex-col justify-between">
-        {/* Top Trust Moniker */}
-        <AnimatedSection delay={100}>
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div className="inline-flex items-center space-x-2.5 bg-white/95 border border-[#C59B4E]/40 px-3.5 py-1.5 shadow-xs">
-              <span className="w-2.5 h-2.5 bg-[#C59B4E] inline-block animate-pulse"></span>
-              <span className="label-caps text-[#14263D]">
-                TRUST &bull; TRANSPARENCY &bull; LEGAL VERIFICATION
+      <div className="relative z-10 max-w-[1500px] mx-auto w-full px-4 sm:px-6 lg:px-16 pt-12 lg:pt-20 pb-12 flex-1 flex flex-col justify-between">
+        {/* Center Main Editorial Hero Lockup */}
+        <AnimatedSection delay={150} className="max-w-4xl my-auto py-8 lg:py-12">
+          {/* Tagline callout with region info */}
+          <div className="flex flex-wrap items-center gap-4 mb-4">
+            <div className="flex items-center space-x-3">
+              <span className="w-8 h-[2px] bg-[#C59B4E]"></span>
+              <span className="label-caps text-[#C59B4E] font-bold">
+                {COMPANY_DETAILS.tagline}
               </span>
             </div>
-
-            <div className="hidden sm:flex items-center space-x-3 text-xs font-sans-arch text-[#77736C]">
-              <span className="uppercase tracking-[0.18em]">3+ YEARS OF TRUSTED PROMOTIONS</span>
-              <span className="text-[#C59B4E]">&bull;</span>
-              <span className="font-mono text-[#14263D]">VISAKHAPATNAM &bull; VIZIANAGARAM &bull; SRIKAKULAM</span>
+            <div className="hidden sm:flex items-center space-x-2 text-xs font-sans-arch text-[#77736C]">
+              <span>&bull;</span>
+              <span className="font-mono text-[11px] text-[#14263D]">VISAKHAPATNAM &bull; VIZIANAGARAM &bull; SRIKAKULAM</span>
             </div>
-          </div>
-        </AnimatedSection>
-
-        {/* Center Main Editorial Hero Lockup */}
-        <AnimatedSection delay={200} className="max-w-4xl my-auto py-8 lg:py-12">
-          {/* Tagline callout */}
-          <div className="flex items-center space-x-3 mb-4">
-            <span className="w-8 h-[2px] bg-[#C59B4E]"></span>
-            <span className="label-caps text-[#C59B4E] font-bold">
-              {COMPANY_DETAILS.tagline}
-            </span>
           </div>
 
           {/* Bodoni Display Headline */}
@@ -139,7 +124,7 @@ export const Hero: React.FC<HeroProps> = ({
         </AnimatedSection>
 
         {/* Bottom Feature Fact Bar */}
-        <AnimatedSection delay={300}>
+        <AnimatedSection delay={250}>
           <div className="border-t border-[#D9D2C6] grid grid-cols-2 lg:grid-cols-4 gap-6 bg-white/90 backdrop-blur-sm p-6 lg:p-8 shadow-xs">
             <div>
               <div className="text-[10px] uppercase tracking-[0.18em] text-[#77736C] mb-1 font-semibold">
