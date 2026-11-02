@@ -34,15 +34,15 @@ export const Hero: React.FC<HeroProps> = ({
 
   return (
     <section id="home" className="relative min-h-[90vh] flex flex-col justify-between overflow-hidden bg-[#FDFBF7] border-b border-[#D9D2C6]">
-      {/* Background Architectural Canvas Layer - Clean, seamless & line-free */}
+      {/* Background Architectural Canvas Layer - Rich opacity & seamless gradient */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2200&q=85"
           alt="IRA Promoters Modern Layout and Properties"
-          className="w-full h-full object-cover object-center opacity-30"
+          className="w-full h-full object-cover object-center opacity-80"
         />
-        {/* Uniform, smooth 100% full-width canvas blend with zero cutoffs or seam lines */}
-        <div className="absolute inset-0 bg-[#FDFBF7]/80"></div>
+        {/* Seamless full-width gradient: Soft contrast on text side, rich visibility on house side */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FDFBF7]/95 via-[#FDFBF7]/75 to-[#FDFBF7]/30"></div>
       </div>
 
       <div className="relative z-10 max-w-[1500px] mx-auto w-full px-4 sm:px-6 lg:px-16 pt-12 lg:pt-20 pb-12 flex-1 flex flex-col justify-between">

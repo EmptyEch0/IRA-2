@@ -26,9 +26,10 @@ export default function App() {
   const [siteVisitTargetProject, setSiteVisitTargetProject] = useState<Project | undefined>(undefined);
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
 
-  // Smooth Fade Page Navigation State
+  // Smooth Fade Page Navigation & Active Section State
   const [isPageFading, setIsPageFading] = useState(false);
   const [fadeTargetTitle, setFadeTargetTitle] = useState<string>('');
+  const [currentSection, setCurrentSection] = useState<string>('home');
 
   const handleOpenSiteVisit = (project?: Project) => {
     setSiteVisitTargetProject(project);
@@ -42,6 +43,7 @@ export default function App() {
   const handleNavigate = (targetId: string, title?: string) => {
     const cleanId = targetId.replace('#', '');
     setFadeTargetTitle(title || cleanId.toUpperCase());
+    setCurrentSection(cleanId);
     setIsPageFading(true);
 
     setTimeout(() => {
@@ -75,10 +77,11 @@ export default function App() {
       {/* Cinematic Fade Transition Overlay for Section/Page Navigation */}
       <PageFadeOverlay isFading={isPageFading} targetName={fadeTargetTitle} />
 
-      {/* Top Fixed Masthead Navigation */}
+      {/* Top Fixed Masthead Navigation with Active Section Reflection */}
       <Navbar
         onOpenSiteVisit={() => handleOpenSiteVisit()}
         onNavigate={handleNavigate}
+        currentSection={currentSection}
       />
 
       <main className={`transition-opacity duration-300 ${isPageFading ? 'opacity-40' : 'opacity-100'}`}>

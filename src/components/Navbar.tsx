@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { COMPANY_DETAILS } from '../data/companyData';
 import { buildWhatsAppLink } from '../utils/architecture';
 import { Phone, MessageCircle, Menu, X, Clock, MapPin } from 'lucide-react';
@@ -11,28 +11,66 @@ import { Phone, MessageCircle, Menu, X, Clock, MapPin } from 'lucide-react';
 interface NavbarProps {
   onOpenSiteVisit: () => void;
   onNavigate?: (sectionId: string, sectionName?: string) => void;
+  currentSection?: string;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenSiteVisit, onNavigate }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onOpenSiteVisit, onNavigate, currentSection }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>('home');
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About Us', href: '#about' },
-    { name: 'Founders', href: '#founders' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Gallery', href: '#gallery' },
-    { name: 'Buyer Guide', href: '#guide' },
-    { name: 'Contact Us', href: '#contact' },
+    { name: 'Home', href: '#home', id: 'home' },
+    { name: 'About Us', href: '#about', id: 'about' },
+    { name: 'Founders', href: '#founders', id: 'founders' },
+    { name: 'Projects', href: '#projects', id: 'projects' },
+    { name: 'Gallery', href: '#gallery', id: 'gallery' },
+    { name: 'Buyer Guide', href: '#guide', id: 'guide' },
+    { name: 'Contact Us', href: '#contact', id: 'contact' },
   ];
+
+  // Sync with currentSection if supplied via props
+  useEffect(() => {
+    if (currentSection) {
+      setActiveSection(currentSection.replace('#', ''));
+    }
+  }, [currentSection]);
+
+  // Real-time ScrollSpy to reflect active page/section in Navbar on scroll
+  useEffect(() => {
+    const sectionIds = ['home', 'about', 'founders', 'projects', 'gallery', 'guide', 'contact'];
+
+    const handleScroll = () => {
+      // Offset for sticky masthead
+      const scrollPosition = window.scrollY + 160;
+
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const id = sectionIds[i];
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.offsetTop;
+          if (scrollPosition >= top) {
+            setActiveSection(id);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial evaluation
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleNavClick = (e: React.MouseEvent, targetId: string, name: string) => {
     e.preventDefault();
     setMobileMenuOpen(false);
+    const cleanId = targetId.replace('#', '');
+    setActiveSection(cleanId);
+
     if (onNavigate) {
       onNavigate(targetId, name);
     } else {
-      const el = document.getElementById(targetId.replace('#', ''));
+      const el = document.getElementById(cleanId);
       if (el) {
         el.scrollIntoView({ behavior: 'smooth' });
       }
@@ -110,18 +148,33 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSiteVisit, onNavigate }) =
           </div>
         </button>
 
-        {/* Desktop Links */}
+        {/* Desktop Links with Active State & Smooth Transition */}
         <nav className="hidden xl:flex items-center space-x-8">
-          {navLinks.map((link) => (
-            <button
-              key={link.name}
-              onClick={(e) => handleNavClick(e, link.href, link.name)}
-              className="font-sans-arch text-[13px] uppercase tracking-[0.15em] text-[#14263D] hover:text-[#C59B4E] font-medium transition-colors relative py-1 group cursor-pointer"
-            >
-              {link.name}
-              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#C59B4E] transition-all duration-300 group-hover:w-full"></span>
-            </button>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.id;
+
+            return (
+              <button
+                key={link.name}
+                onClick={(e) => handleNavClick(e, link.href, link.name)}
+                className={`font-sans-arch text-[13px] uppercase tracking-[0.15em] transition-all duration-300 relative py-1.5 cursor-pointer group ${
+                  isActive
+                    ? 'text-[#C59B4E] font-bold scale-[1.02]'
+                    : 'text-[#14263D] hover:text-[#C59B4E] font-medium'
+                }`}
+              >
+                <span>{link.name}</span>
+                {/* Active indicator bar with smooth sliding transition */}
+                <span
+                  className={`absolute bottom-0 left-0 h-[2px] bg-[#C59B4E] transition-all duration-300 ease-out ${
+                    isActive
+                      ? 'w-full opacity-100 shadow-[0_0_6px_rgba(197,155,78,0.6)]'
+                      : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-50'
+                  }`}
+                />
+              </button>
+            );
+          })}
         </nav>
 
         {/* Quick Action CTAs */}
@@ -157,16 +210,25 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSiteVisit, onNavigate }) =
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="xl:hidden bg-[#FDFBF7] border-b border-[#D9D2C6] px-6 py-6 space-y-4 shadow-xl">
-          <nav className="flex flex-col space-y-3">
-            {navLinks.map((link) => (
-              <button
-                key={link.name}
-                onClick={(e) => handleNavClick(e, link.href, link.name)}
-                className="font-sans-arch text-sm uppercase tracking-[0.15em] text-[#14263D] font-medium py-2 border-b border-[#D9D2C6]/50 hover:text-[#C59B4E] text-left cursor-pointer"
-              >
-                {link.name}
-              </button>
-            ))}
+          <nav className="flex flex-col space-y-2">
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.id;
+
+              return (
+                <button
+                  key={link.name}
+                  onClick={(e) => handleNavClick(e, link.href, link.name)}
+                  className={`font-sans-arch text-sm uppercase tracking-[0.15em] py-2.5 transition-all text-left cursor-pointer flex items-center justify-between ${
+                    isActive
+                      ? 'bg-[#F8F5EE] text-[#C59B4E] font-bold border-l-4 border-[#C59B4E] pl-3 pr-2'
+                      : 'text-[#14263D] font-medium border-b border-[#D9D2C6]/50 hover:text-[#C59B4E] pl-1'
+                  }`}
+                >
+                  <span>{link.name}</span>
+                  {isActive && <span className="w-1.5 h-1.5 bg-[#C59B4E] rounded-full"></span>}
+                </button>
+              );
+            })}
           </nav>
 
           <div className="pt-2 space-y-3">
