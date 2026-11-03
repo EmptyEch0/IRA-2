@@ -48,7 +48,7 @@ export const BuyerGuideSection: React.FC = () => {
               <span className="chapter-numeral text-[#C59B4E] select-none">05</span>
               <div>
                 <span className="label-caps text-[#77736C]">BUYER ADVISORY &bull; FAQs</span>
-                <h2 className="font-serif-arch text-3xl sm:text-5xl text-[#14263D] mt-1 font-normal">
+                <h2 className="font-serif-arch text-3xl sm:text-5xl text-[#0A192F] mt-1 font-bold">
                   Transparent Property Guidance.
                 </h2>
               </div>

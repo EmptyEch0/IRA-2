@@ -42,7 +42,7 @@ export const AboutSection: React.FC = () => {
               <span className="chapter-numeral text-[#C59B4E] select-none">01</span>
               <div>
                 <span className="label-caps text-[#77736C]">ABOUT US &bull; OUR IDENTITY</span>
-                <h2 className="font-serif-arch text-3xl sm:text-5xl text-[#14263D] mt-1 font-normal">
+                <h2 className="font-serif-arch text-3xl sm:text-5xl text-[#0A192F] mt-1 font-bold">
                   Putting Trust &amp; Legal Scrutiny First.
                 </h2>
               </div>
@@ -61,7 +61,7 @@ export const AboutSection: React.FC = () => {
           {/* Left Narrative (6 cols) */}
           <AnimatedSection delay={150} className="lg:col-span-6 space-y-6">
             <div className="bg-white border-l-4 border-[#C59B4E] p-6 sm:p-8 shadow-xs">
-              <p className="font-serif-arch text-xl sm:text-2xl text-[#14263D] font-normal leading-relaxed italic">
+              <p className="font-serif-arch text-xl sm:text-2xl text-[#0A192F] font-semibold leading-relaxed italic">
                 &ldquo;IRA Promoters stands apart by putting trust, transparency, and legal verification before every property recommendation.&rdquo;
               </p>
             </div>

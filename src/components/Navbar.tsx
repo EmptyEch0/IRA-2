@@ -83,17 +83,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSiteVisit, onNavigate, cur
   );
 
   return (
-    <header className="sticky top-0 z-50 bg-[#FDFBF7]/95 backdrop-blur-md border-b border-[#D9D2C6] transition-all shadow-xs">
+    <header className="sticky top-0 z-50 bg-[#FDFBF7] border-b border-[#D9D2C6] transition-all shadow-xs">
       {/* Top Office Information Strip */}
-      <div className="hidden lg:flex justify-between items-center px-8 lg:px-16 py-1.5 text-[11px] uppercase tracking-wider text-[#77736C] border-b border-[#D9D2C6]/60 bg-[#F8F5EE]">
+      <div className="hidden lg:flex justify-between items-center px-8 lg:px-16 py-1.5 text-[11px] uppercase tracking-wider text-[#374151] font-semibold border-b border-[#D9D2C6]/60 bg-[#F8F5EE]">
         <div className="flex items-center space-x-6">
-          <span className="flex items-center space-x-1.5 text-[#14263D]">
-            <MapPin className="w-3.5 h-3.5 text-[#C59B4E]" />
+          <span className="flex items-center space-x-1.5 text-[#0A192F]">
+            <MapPin className="w-3.5 h-3.5 text-[#A77B28]" />
             <span>PM Palem, Madhurawada, Visakhapatnam</span>
           </span>
           <span className="text-[#D9D2C6]">|</span>
           <span className="flex items-center space-x-1.5">
-            <Clock className="w-3.5 h-3.5 text-[#C59B4E]" />
+            <Clock className="w-3.5 h-3.5 text-[#A77B28]" />
             <span>Open Every Day: 10:00 AM – 6:00 PM</span>
           </span>
         </div>
@@ -101,9 +101,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSiteVisit, onNavigate, cur
         <div className="flex items-center space-x-6">
           <a
             href={`tel:${COMPANY_DETAILS.phone1}`}
-            className="flex items-center space-x-1.5 text-[#14263D] hover:text-[#C59B4E] transition-colors font-medium font-mono"
+            className="flex items-center space-x-1.5 text-[#0A192F] hover:text-[#A77B28] transition-colors font-bold font-mono"
           >
-            <Phone className="w-3.5 h-3.5 text-[#C59B4E]" />
+            <Phone className="w-3.5 h-3.5 text-[#A77B28]" />
             <span>Call: +91 {COMPANY_DETAILS.phone1} / {COMPANY_DETAILS.phone2}</span>
           </a>
           <span className="text-[#D9D2C6]">|</span>
@@ -111,7 +111,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSiteVisit, onNavigate, cur
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center space-x-1.5 text-[#075e54] hover:text-[#128c7e] transition-colors font-semibold"
+            className="flex items-center space-x-1.5 text-[#075E54] hover:text-[#054c44] transition-colors font-bold"
           >
             <MessageCircle className="w-3.5 h-3.5" />
             <span>WhatsApp: +91 {COMPANY_DETAILS.whatsappNumber}</span>
@@ -121,28 +121,28 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSiteVisit, onNavigate, cur
 
       {/* Main Navigation Bar */}
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-16 h-20 lg:h-24 flex items-center justify-between">
-        {/* Brand Mark with Official Logo */}
+        {/* Brand Mark with Official Logo - High Opacity & Bold Contrast */}
         <button
           onClick={(e) => handleNavClick(e, '#home', 'Home')}
           className="flex items-center space-x-3.5 group text-left cursor-pointer"
         >
-          <div className="h-14 sm:h-16 w-auto overflow-hidden flex items-center justify-center p-0.5 border border-[#D9D2C6] bg-white shadow-xs">
+          <div className="h-14 sm:h-16 w-auto overflow-hidden flex items-center justify-center p-0.5 border border-[#D9D2C6] bg-white shadow-xs rounded-md">
             <img
               src={COMPANY_DETAILS.logoUrl}
               alt="IRA Promoters Official Logo"
-              className="h-full w-auto object-contain"
+              className="h-full w-auto object-contain opacity-100"
             />
           </div>
           <div className="flex flex-col">
             <div className="flex items-baseline space-x-1.5">
-              <span className="font-serif-arch text-2xl sm:text-3xl text-[#14263D] tracking-tight font-bold">
+              <span className="font-serif-arch text-2xl sm:text-3xl text-[#0A192F] tracking-tight font-bold opacity-100">
                 IRA
               </span>
-              <span className="font-sans-arch text-xs sm:text-sm uppercase tracking-[0.2em] text-[#C59B4E] font-semibold">
+              <span className="font-sans-arch text-xs sm:text-sm uppercase tracking-[0.2em] text-[#9E7422] font-bold opacity-100">
                 PROMOTERS
               </span>
             </div>
-            <span className="font-sans-arch text-[11px] tracking-[0.05em] text-[#77736C] italic -mt-0.5">
+            <span className="font-sans-arch text-[11px] tracking-[0.05em] text-[#1F2937] font-semibold italic -mt-0.5 opacity-100">
               {COMPANY_DETAILS.tagline}
             </span>
           </div>
@@ -159,16 +159,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSiteVisit, onNavigate, cur
                 onClick={(e) => handleNavClick(e, link.href, link.name)}
                 className={`font-sans-arch text-[13px] uppercase tracking-[0.15em] transition-all duration-300 relative py-1.5 cursor-pointer group ${
                   isActive
-                    ? 'text-[#C59B4E] font-bold scale-[1.02]'
-                    : 'text-[#14263D] hover:text-[#C59B4E] font-medium'
+                    ? 'text-[#9E7422] font-bold scale-[1.02]'
+                    : 'text-[#0A192F] hover:text-[#9E7422] font-semibold'
                 }`}
               >
                 <span>{link.name}</span>
                 {/* Active indicator bar with smooth sliding transition */}
                 <span
-                  className={`absolute bottom-0 left-0 h-[2px] bg-[#C59B4E] transition-all duration-300 ease-out ${
+                  className={`absolute bottom-0 left-0 h-[2.5px] bg-[#9E7422] transition-all duration-300 ease-out ${
                     isActive
-                      ? 'w-full opacity-100 shadow-[0_0_6px_rgba(197,155,78,0.6)]'
+                      ? 'w-full opacity-100 shadow-[0_0_6px_rgba(158,116,34,0.6)]'
                       : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-50'
                   }`}
                 />
@@ -177,13 +177,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSiteVisit, onNavigate, cur
           })}
         </nav>
 
-        {/* Quick Action CTAs */}
+        {/* Quick Action CTAs - Curved & Dark Green WhatsApp */}
         <div className="hidden md:flex items-center space-x-3">
           <a
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#25D366] text-white font-sans-arch text-xs font-semibold uppercase tracking-[0.12em] px-4 py-3 flex items-center space-x-2 hover:bg-[#20bd5a] transition-colors shadow-xs cursor-pointer"
+            className="bg-[#075E54] text-white font-sans-arch text-xs font-semibold uppercase tracking-[0.12em] px-4 py-3 flex items-center space-x-2 hover:bg-[#054c44] transition-colors shadow-xs cursor-pointer rounded-lg"
           >
             <MessageCircle className="w-4 h-4" />
             <span>WhatsApp Us</span>
@@ -191,7 +191,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSiteVisit, onNavigate, cur
 
           <button
             onClick={onOpenSiteVisit}
-            className="bg-[#14263D] text-[#FDFBF7] font-sans-arch text-xs font-medium uppercase tracking-[0.14em] px-5 py-3 border border-[#14263D] hover:bg-[#1A304D] hover:border-[#C59B4E] transition-all cursor-pointer shadow-xs"
+            className="bg-[#14263D] text-[#FDFBF7] font-sans-arch text-xs font-medium uppercase tracking-[0.14em] px-5 py-3 border border-[#14263D] hover:bg-[#1A304D] hover:border-[#C59B4E] transition-all cursor-pointer shadow-xs rounded-lg"
           >
             Schedule Site Visit
           </button>
@@ -200,7 +200,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSiteVisit, onNavigate, cur
         {/* Mobile Hamburger Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="xl:hidden p-2.5 text-[#14263D] border border-[#D9D2C6] bg-white cursor-pointer"
+          className="xl:hidden p-2.5 text-[#14263D] border border-[#D9D2C6] bg-white cursor-pointer rounded-md"
           aria-label={mobileMenuOpen ? 'Close Menu' : 'Open Menu'}
         >
           {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -218,14 +218,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSiteVisit, onNavigate, cur
                 <button
                   key={link.name}
                   onClick={(e) => handleNavClick(e, link.href, link.name)}
-                  className={`font-sans-arch text-sm uppercase tracking-[0.15em] py-2.5 transition-all text-left cursor-pointer flex items-center justify-between ${
+                  className={`font-sans-arch text-sm uppercase tracking-[0.15em] py-2.5 transition-all text-left cursor-pointer flex items-center justify-between rounded-md ${
                     isActive
-                      ? 'bg-[#F8F5EE] text-[#C59B4E] font-bold border-l-4 border-[#C59B4E] pl-3 pr-2'
-                      : 'text-[#14263D] font-medium border-b border-[#D9D2C6]/50 hover:text-[#C59B4E] pl-1'
+                      ? 'bg-[#F8F5EE] text-[#9E7422] font-bold border-l-4 border-[#9E7422] pl-3 pr-2'
+                      : 'text-[#0A192F] font-semibold border-b border-[#D9D2C6]/50 hover:text-[#9E7422] pl-1'
                   }`}
                 >
                   <span>{link.name}</span>
-                  {isActive && <span className="w-1.5 h-1.5 bg-[#C59B4E] rounded-full"></span>}
+                  {isActive && <span className="w-1.5 h-1.5 bg-[#9E7422] rounded-full"></span>}
                 </button>
               );
             })}
@@ -234,7 +234,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSiteVisit, onNavigate, cur
           <div className="pt-2 space-y-3">
             <a
               href={`tel:${COMPANY_DETAILS.phone1}`}
-              className="w-full bg-[#14263D] text-white py-3 font-sans-arch text-xs uppercase tracking-widest flex items-center justify-center space-x-2"
+              className="w-full bg-[#14263D] text-white py-3 font-sans-arch text-xs uppercase tracking-widest flex items-center justify-center space-x-2 rounded-lg"
             >
               <Phone className="w-4 h-4 text-[#C59B4E]" />
               <span>Call: +91 {COMPANY_DETAILS.phone1}</span>
@@ -244,7 +244,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSiteVisit, onNavigate, cur
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full bg-[#25D366] text-white py-3 font-sans-arch text-xs uppercase tracking-widest flex items-center justify-center space-x-2 font-semibold"
+              className="w-full bg-[#075E54] text-white py-3 font-sans-arch text-xs uppercase tracking-widest flex items-center justify-center space-x-2 font-semibold rounded-lg"
             >
               <MessageCircle className="w-4 h-4" />
               <span>WhatsApp Us: {COMPANY_DETAILS.whatsappNumber}</span>

@@ -19,7 +19,7 @@ export const FoundersSection: React.FC = () => {
               <span className="chapter-numeral text-[#C59B4E] select-none">02</span>
               <div>
                 <span className="label-caps text-[#77736C]">LEADERSHIP &bull; FOUNDING DIRECTORS</span>
-                <h2 className="font-serif-arch text-3xl sm:text-5xl text-[#14263D] mt-1 font-normal">
+                <h2 className="font-serif-arch text-3xl sm:text-5xl text-[#0A192F] mt-1 font-bold">
                   Experienced Visionaries Behind IRA Promoters.
                 </h2>
               </div>
@@ -35,13 +35,13 @@ export const FoundersSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14">
           {FOUNDERS.map((founder, index) => (
             <AnimatedSection key={founder.name} delay={index * 150}>
-              <div className="bg-white border border-[#D9D2C6] p-6 sm:p-8 shadow-xs hover:border-[#C59B4E] transition-all flex flex-col justify-between h-full">
+              <div className="bg-white border border-[#D9D2C6] p-6 sm:p-8 shadow-xs hover:border-[#C59B4E] transition-all flex flex-col justify-between h-full rounded-lg">
                 <div>
                   {/* Top Executive Header with Clean Image Display */}
                   <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 pb-6 border-b border-[#D9D2C6] mb-6">
                     {/* Founder Portrait Photo */}
                     <div className="sm:col-span-5 flex flex-col items-center sm:items-start">
-                      <div className="relative w-full aspect-[4/5] bg-[#F8F5EE] border-2 border-[#14263D] overflow-hidden group shadow-sm">
+                      <div className="relative w-full aspect-[4/5] bg-[#F8F5EE] border-2 border-[#14263D] overflow-hidden group shadow-sm rounded-md">
                         <img
                           src={founder.image}
                           alt={founder.name}
@@ -60,7 +60,7 @@ export const FoundersSection: React.FC = () => {
                         <span className="text-xs uppercase tracking-[0.2em] text-[#C59B4E] font-semibold block mb-1">
                           {founder.role}
                         </span>
-                        <h3 className="font-serif-arch text-2xl sm:text-3xl text-[#14263D] font-normal mb-3">
+                        <h3 className="font-serif-arch text-2xl sm:text-3xl text-[#0A192F] font-bold mb-3">
                           {founder.name}
                         </h3>
 

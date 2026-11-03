@@ -29,11 +29,6 @@
     overflow-x: hidden;
   }
 
-  /* Zero-pill / 0px radius discipline as specified by the architectural system */
-  *, *::before, *::after {
-    border-radius: 0 !important;
-  }
-
   /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 6px;

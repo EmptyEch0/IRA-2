@@ -19,7 +19,7 @@ export const GallerySection: React.FC = () => {
               <span className="chapter-numeral text-[#C59B4E] select-none">04</span>
               <div>
                 <span className="label-caps text-[#77736C]">SITE UPDATES &bull; TRANSPARENCY IN ACTION</span>
-                <h2 className="font-serif-arch text-3xl sm:text-5xl text-[#14263D] mt-1 font-normal">
+                <h2 className="font-serif-arch text-3xl sm:text-5xl text-[#0A192F] mt-1 font-bold">
                   Gallery &amp; Ground Progress.
                 </h2>
               </div>
@@ -35,7 +35,7 @@ export const GallerySection: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {GALLERY_UPDATES.map((item, index) => (
             <AnimatedSection key={item.title} delay={index * 100}>
-              <div className="bg-white border border-[#D9D2C6] hover:border-[#C59B4E] transition-all group overflow-hidden flex flex-col justify-between h-full shadow-xs">
+              <div className="bg-white border border-[#D9D2C6] hover:border-[#C59B4E] transition-all group overflow-hidden flex flex-col justify-between h-full shadow-xs rounded-lg">
                 <div className="relative aspect-[4/3] overflow-hidden bg-[#14263D]">
                   <img
                     src={item.image}

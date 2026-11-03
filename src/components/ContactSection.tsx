@@ -76,7 +76,7 @@ export const ContactSection: React.FC = () => {
               <span className="chapter-numeral text-[#C59B4E] select-none">06</span>
               <div>
                 <span className="label-caps text-[#77736C]">DIRECT ASSISTANCE &bull; CONTACT US</span>
-                <h2 className="font-serif-arch text-3xl sm:text-5xl text-[#14263D] mt-1 font-normal">
+                <h2 className="font-serif-arch text-3xl sm:text-5xl text-[#0A192F] mt-1 font-bold">
                   Connect With IRA Promoters.
                 </h2>
               </div>
@@ -217,7 +217,7 @@ export const ContactSection: React.FC = () => {
           <AnimatedSection delay={250} className="lg:col-span-7 bg-white border border-[#D9D2C6] p-8 lg:p-12 shadow-xs">
             <div className="mb-8">
               <span className="label-caps text-[#C59B4E]">QUICK ONLINE ENQUIRY</span>
-              <h3 className="font-serif-arch text-2xl sm:text-3xl text-[#14263D] font-normal mt-1 mb-2">
+              <h3 className="font-serif-arch text-2xl sm:text-3xl text-[#0A192F] font-bold mt-1 mb-2">
                 Send Your Enquiry to IRA Promoters
               </h3>
               <p className="text-xs text-[#77736C] font-light leading-relaxed">
@@ -247,7 +247,7 @@ export const ContactSection: React.FC = () => {
                   placeholder="e.g. K. Venkata Rao"
                   value={formData.fullName}
                   onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                  className="w-full bg-[#FDFBF7] border border-[#D9D2C6] px-4 py-3 text-sm font-sans-arch text-[#14263D] placeholder-[#77736C] focus:outline-none focus:border-[#C59B4E]"
+                  className="w-full bg-[#FDFBF7] border border-[#D9D2C6] px-4 py-3 text-sm font-sans-arch text-[#14263D] placeholder-[#77736C] focus:outline-none focus:border-[#C59B4E] rounded-md"
                 />
                 {errors.fullName && (
                   <span className="text-xs text-[#ba1a1a] mt-1 block">{errors.fullName}</span>
@@ -265,7 +265,7 @@ export const ContactSection: React.FC = () => {
                   placeholder="e.g. 9573960563"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="w-full bg-[#FDFBF7] border border-[#D9D2C6] px-4 py-3 text-sm font-sans-arch text-[#14263D] placeholder-[#77736C] focus:outline-none focus:border-[#C59B4E]"
+                  className="w-full bg-[#FDFBF7] border border-[#D9D2C6] px-4 py-3 text-sm font-sans-arch text-[#14263D] placeholder-[#77736C] focus:outline-none focus:border-[#C59B4E] rounded-md"
                 />
                 {errors.phone && (
                   <span className="text-xs text-[#ba1a1a] mt-1 block">{errors.phone}</span>
@@ -280,7 +280,7 @@ export const ContactSection: React.FC = () => {
                 <select
                   value={formData.projectInterest}
                   onChange={(e) => setFormData({ ...formData, projectInterest: e.target.value })}
-                  className="w-full bg-[#FDFBF7] border border-[#D9D2C6] px-4 py-3 text-sm font-sans-arch text-[#14263D] focus:outline-none focus:border-[#C59B4E]"
+                  className="w-full bg-[#FDFBF7] border border-[#D9D2C6] px-4 py-3 text-sm font-sans-arch text-[#14263D] focus:outline-none focus:border-[#C59B4E] rounded-md"
                 >
                   <option value="">General Property Enquiry (Plots, Flats, Farmland)</option>
                   <option value="IRA Golden Palms Layout (Anandapuram)">IRA Golden Palms Layout (Anandapuram)</option>
@@ -302,7 +302,7 @@ export const ContactSection: React.FC = () => {
                   placeholder="Tell us what you are looking for (e.g. 200 sq.yards East-facing plot in Anandapuram or 3 BHK flat in PM Palem)..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full bg-[#FDFBF7] border border-[#D9D2C6] px-4 py-3 text-sm font-sans-arch text-[#14263D] placeholder-[#77736C] focus:outline-none focus:border-[#C59B4E]"
+                  className="w-full bg-[#FDFBF7] border border-[#D9D2C6] px-4 py-3 text-sm font-sans-arch text-[#14263D] placeholder-[#77736C] focus:outline-none focus:border-[#C59B4E] rounded-md"
                 ></textarea>
                 {errors.message && (
                   <span className="text-xs text-[#ba1a1a] mt-1 block">{errors.message}</span>
@@ -339,7 +339,7 @@ export const ContactSection: React.FC = () => {
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full bg-[#25D366] text-white font-sans-arch text-xs font-bold uppercase tracking-[0.16em] py-4 hover:bg-[#20bd5a] transition-colors flex items-center justify-center space-x-2.5 cursor-pointer shadow-md"
+                  className="w-full bg-[#075E54] hover:bg-[#054c44] text-white font-sans-arch text-xs font-bold uppercase tracking-[0.16em] py-4 transition-colors flex items-center justify-center space-x-2.5 cursor-pointer shadow-md rounded-lg"
                 >
                   <MessageCircle className="w-4 h-4" />
                   <span>Send Enquiry on WhatsApp</span>

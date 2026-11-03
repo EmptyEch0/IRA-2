@@ -153,7 +153,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
         <div className="sticky bottom-0 z-20 bg-[#F8F5EE] border-t border-[#D9D2C6] px-6 py-4 flex flex-wrap items-center justify-between gap-4">
           <button
             onClick={onClose}
-            className="border border-[#D9D2C6] text-[#77736C] hover:text-[#14263D] px-5 py-2.5 text-xs uppercase tracking-widest cursor-pointer"
+            className="border border-[#D9D2C6] text-[#77736C] hover:text-[#14263D] px-5 py-2.5 text-xs uppercase tracking-widest cursor-pointer rounded-lg"
           >
             Close
           </button>
@@ -164,7 +164,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                 onClose();
                 onOpenSiteVisit(project);
               }}
-              className="bg-white border border-[#14263D] text-[#14263D] px-5 py-2.5 text-xs uppercase tracking-widest hover:bg-[#F8F5EE] cursor-pointer flex items-center space-x-2"
+              className="bg-white border border-[#14263D] text-[#14263D] px-5 py-2.5 text-xs uppercase tracking-widest hover:bg-[#F8F5EE] cursor-pointer flex items-center space-x-2 rounded-lg"
             >
               <Calendar className="w-3.5 h-3.5 text-[#C59B4E]" />
               <span>Schedule Site Visit</span>
@@ -174,7 +174,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#25D366] text-white px-6 py-2.5 text-xs font-semibold uppercase tracking-widest hover:bg-[#20bd5a] flex items-center space-x-2 cursor-pointer shadow-sm"
+              className="bg-[#075E54] hover:bg-[#054c44] text-white px-6 py-2.5 text-xs font-semibold uppercase tracking-widest flex items-center space-x-2 cursor-pointer shadow-sm rounded-lg"
             >
               <MessageCircle className="w-4 h-4" />
               <span>WhatsApp Enquiry</span>

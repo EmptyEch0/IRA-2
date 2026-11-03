@@ -51,7 +51,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
               <span className="chapter-numeral text-[#C59B4E] select-none">03</span>
               <div>
                 <span className="label-caps text-[#77736C]">PORTFOLIO &bull; ONGOING &amp; COMPLETED VENTURES</span>
-                <h2 className="font-serif-arch text-3xl sm:text-5xl text-[#14263D] mt-1 font-normal">
+                <h2 className="font-serif-arch text-3xl sm:text-5xl text-[#0A192F] mt-1 font-bold">
                   Carefully Selected Properties.
                 </h2>
               </div>
@@ -157,7 +157,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
 
               return (
                 <AnimatedSection key={project.id} delay={index * 100}>
-                  <article className="bg-white border border-[#D9D2C6] flex flex-col justify-between h-full group hover:border-[#C59B4E] transition-all shadow-xs">
+                  <article className="bg-white border border-[#D9D2C6] flex flex-col justify-between h-full group hover:border-[#C59B4E] transition-all shadow-xs rounded-lg overflow-hidden">
                     {/* Visual Upper Frame */}
                     <div className="relative aspect-[16/11] overflow-hidden bg-[#14263D]">
                       <img
@@ -230,7 +230,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                       <div className="space-y-2 pt-4 border-t border-[#D9D2C6]">
                         <button
                           onClick={() => onSelectProject(project)}
-                          className="w-full bg-[#14263D] text-[#FDFBF7] py-2.5 font-sans-arch text-xs uppercase tracking-wider hover:bg-[#1A304D] flex items-center justify-center space-x-2 cursor-pointer transition-colors"
+                          className="w-full bg-[#14263D] text-[#FDFBF7] py-2.5 font-sans-arch text-xs uppercase tracking-wider hover:bg-[#1A304D] flex items-center justify-center space-x-2 cursor-pointer transition-colors rounded-md"
                         >
                           <Eye className="w-3.5 h-3.5 text-[#C59B4E]" />
                           <span>View Project Details</span>
@@ -241,7 +241,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                             href={whatsappProjectUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="bg-[#25D366] text-white py-2 text-center text-[11px] font-sans-arch uppercase tracking-wider flex items-center justify-center space-x-1.5 hover:bg-[#20bd5a] transition-colors"
+                            className="bg-[#075E54] hover:bg-[#054c44] text-white py-2 text-center text-[11px] font-sans-arch uppercase tracking-wider flex items-center justify-center space-x-1.5 transition-colors rounded-md"
                           >
                             <MessageCircle className="w-3.5 h-3.5" />
                             <span>WhatsApp</span>
@@ -249,7 +249,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
 
                           <button
                             onClick={() => onOpenSiteVisit(project)}
-                            className="border border-[#14263D] text-[#14263D] py-2 text-[11px] font-sans-arch uppercase tracking-wider hover:bg-[#14263D] hover:text-white transition-colors cursor-pointer"
+                            className="border border-[#14263D] text-[#14263D] py-2 text-[11px] font-sans-arch uppercase tracking-wider hover:bg-[#14263D] hover:text-white transition-colors cursor-pointer rounded-md"
                           >
                             Site Visit
                           </button>

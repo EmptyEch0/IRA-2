@@ -48,7 +48,7 @@ export const SiteVisitModal: React.FC<SiteVisitModalProps> = ({
       aria-labelledby="modal-visit-title"
       className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#001126]/85 backdrop-blur-sm overflow-y-auto"
     >
-      <div className="relative bg-[#FDFBF7] border-2 border-[#14263D] w-full max-w-xl max-h-[92vh] overflow-y-auto shadow-2xl">
+      <div className="relative bg-[#FDFBF7] border-2 border-[#14263D] w-full max-w-xl max-h-[92vh] overflow-y-auto shadow-2xl rounded-xl">
         {/* Header */}
         <div className="bg-[#14263D] text-[#FDFBF7] px-6 py-4 flex items-center justify-between border-b border-[#C59B4E]/40">
           <div className="flex items-center space-x-2.5">
@@ -180,7 +180,7 @@ export const SiteVisitModal: React.FC<SiteVisitModalProps> = ({
             <div className="pt-3">
               <button
                 type="submit"
-                className="w-full bg-[#25D366] text-white py-3.5 font-sans-arch text-xs font-bold uppercase tracking-wider hover:bg-[#20bd5a] transition-colors flex items-center justify-center space-x-2 cursor-pointer shadow-md"
+                className="w-full bg-[#075E54] hover:bg-[#054c44] text-white py-3.5 font-sans-arch text-xs font-bold uppercase tracking-wider transition-colors flex items-center justify-center space-x-2 cursor-pointer shadow-md rounded-lg"
               >
                 <MessageCircle className="w-4 h-4" />
                 <span>Confirm Site Visit on WhatsApp</span>
